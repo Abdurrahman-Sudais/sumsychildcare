@@ -8,20 +8,20 @@ import {
   Target01Icon,
   EyeIcon,
   Shield01Icon,
-  CheckmarkCircle01Icon,
+  CheckmarkBadge01Icon as TickIcon,
   ArrowRight01Icon,
-  CircleUser
+  UserCircleIcon,
 } from '@hugeicons/core-free-icons'
 
 export const metadata: Metadata = {
   title: 'About | Sumsy Childcare Limited',
   description:
-    'Meet the owner and carer behind Sumsy Childcare Limited — an Ofsted-registered, sole-proprietor childcare service in Eltham, SE9, for children aged 5–16.',
+    'Meet the owner and carer behind Sumsy Childcare Limited — an Ofsted-registered, sole-proprietor childcare service in Eltham, SE9, for children aged 6–16.',
 }
 
 const certifications = [
   'Ofsted Registered Childcare Provider',
-  'Licensed to care for children aged 5–16',
+  'Licensed to care for children aged 6–16',
   'Fully DBS checked and verified',
   'CPR & First Aid Certified',
   'Committed to annual safeguarding training',
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-lg text-sc-steel max-w-2xl mx-auto leading-relaxed">
             An Ofsted-registered, owner-operated childcare service in Eltham, SE9 —
-            providing personal, consistent, and professional care for children aged 5–16.
+            providing personal, consistent, and professional care for children aged 6–16.
           </p>
         </div>
       </section>
@@ -56,7 +56,6 @@ export default function AboutPage() {
             {/* Photo */}
             <div className="reveal-left flex flex-col items-center">
               <div className="relative w-80 h-80 rounded-[40px] overflow-hidden shadow-2xl mb-8 border-[1.5px] border-sc-navy">
-                {/* Placeholder — replace src with client's actual photo */}
                 <Image
                   src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80"
                   alt="Owner and carer — Sumsy Childcare Limited"
@@ -82,7 +81,7 @@ export default function AboutPage() {
             {/* Bio */}
             <div className="reveal-right">
               <div className="inline-flex items-center gap-2 bg-sc-cream text-sc-terracotta px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-sc-terracotta/20">
-                <HugeiconsIcon icon={CircleUser} className="w-4 h-4" />
+                <HugeiconsIcon icon={UserCircleIcon} className="w-4 h-4" />
                 The Person Behind the Care
               </div>
               <h2 className="section-title mb-6">Dedicated to Every Child in Our Care</h2>
@@ -95,7 +94,7 @@ export default function AboutPage() {
                   dedicated care.
                 </p>
                 <p>
-                  Ofsted registered and serving children aged 5–16, the service is
+                  Ofsted registered and serving children aged 6–16, the service is
                   built around flexibility and trust. Whether you need before-school
                   cover, after-school care, or holiday support, the goal is always
                   the same: your child feels safe, happy, and at home.
@@ -162,7 +161,7 @@ export default function AboutPage() {
             <ul className="grid sm:grid-cols-2 gap-6">
               {certifications.map((cert) => (
                 <li key={cert} className="flex items-start gap-4">
-                  <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-6 h-6 text-sc-terracotta flex-shrink-0 mt-0.5" />
+                  <HugeiconsIcon icon={TickIcon} className="w-6 h-6 text-sc-terracotta flex-shrink-0 mt-0.5" />
                   <span className="text-sc-navy font-bold text-lg leading-relaxed">{cert}</span>
                 </li>
               ))}

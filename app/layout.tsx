@@ -8,13 +8,13 @@ export const metadata: Metadata = {
     template: '%s | Sumsy Childcare Limited',
   },
   description:
-    'Sumsy Childcare Limited — Ofsted-registered, owner-operated childcare for children aged 5–16 in Eltham, SE9. Flexible hours 7 days a week. Call or WhatsApp +44 7448 364115.',
+    'Sumsy Childcare Limited — Ofsted-registered, owner-operated childcare for children aged 6–16 in Eltham, SE9. Flexible hours 7 days a week. Call or WhatsApp +44 7448 364115.',
   keywords: [
     'childcare Eltham',
     'childcare SE9',
     'Ofsted registered childcare',
     'after school care Eltham',
-    'childcare ages 5 to 16',
+    'childcare ages 6 to 16',
     'Sumsy Childcare Limited',
     'holiday childcare London',
     'before school care SE9',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sumsy Childcare Limited | Ofsted Registered · Eltham SE9',
     description:
-      'Safe, personal, Ofsted-registered childcare for ages 5–16 in Eltham. Flexible hours 7 days a week.',
+      'Safe, personal, Ofsted-registered childcare for ages 6–16 in Eltham. Flexible hours 7 days a week.',
     type: 'website',
     locale: 'en_GB',
     siteName: 'Sumsy Childcare Limited',

@@ -4,7 +4,7 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import {
   Sun01Icon,
   Calendar01Icon,
-  CheckmarkCircle01Icon,
+  CheckmarkBadge01Icon as TickIcon,
   Clock01Icon,
   UserGroupIcon,
   ArrowRight01Icon,
@@ -12,13 +12,13 @@ import {
   StarIcon,
   BookOpen01Icon,
   Coffee01Icon,
-  Airplane01Icon
+  Airplane01Icon,
 } from '@hugeicons/core-free-icons'
 
 export const metadata: Metadata = {
   title: 'Our Services | Sumsy Childcare Limited',
   description:
-    'Explore Sumsy Childcare Limited\'s childcare services for ages 5–16 in Eltham, SE9: after-school care, before-school care, holiday cover, and flexible ad hoc sessions.',
+    'Explore Sumsy Childcare Limited\'s childcare services for ages 6–16 in Eltham, SE9: after-school care, before-school care, holiday cover, and flexible ad hoc sessions.',
 }
 
 const services = [
@@ -27,7 +27,7 @@ const services = [
     icon: Sun01Icon,
     title: 'After-School Care',
     tagline: 'Safe, Supervised & Fun After the School Day',
-    ageRange: '5–16 years',
+    ageRange: '6–16 years',
     description:
       'Our after-school service gives working parents complete peace of mind. Children are collected or dropped off, given a healthy snack, and supported with homework, activities, and relaxed play until you\'re ready to pick up.',
     benefits: [
@@ -45,7 +45,7 @@ const services = [
     icon: Coffee01Icon,
     title: 'Before-School Care',
     tagline: 'A Calm, Positive Start to the Day',
-    ageRange: '5–16 years',
+    ageRange: '6–16 years',
     description:
       'Early starts are no problem. We offer a safe, welcoming environment from 7 AM — giving children a calm, positive beginning to their school day while parents head to work with confidence.',
     benefits: [
@@ -63,7 +63,7 @@ const services = [
     icon: Airplane01Icon,
     title: 'Holiday & School Break Cover',
     tagline: 'Continuous Care When School Is Out',
-    ageRange: '5–16 years',
+    ageRange: '6–16 years',
     description:
       'School holidays don\'t have to disrupt your work schedule. We provide full-day and half-day cover during half-terms, Easter, summer, and Christmas breaks — with engaging activities to keep children stimulated and happy.',
     benefits: [
@@ -81,7 +81,7 @@ const services = [
     icon: Calendar01Icon,
     title: 'Flexible & Weekend Care',
     tagline: 'Care When Life Is Unpredictable',
-    ageRange: '5–16 years',
+    ageRange: '6–16 years',
     description:
       'Modern family life is busy and unpredictable. Our flexible and weekend care options mean you can book sessions as you need them — no rigid contracts, no pressure. Saturday and Sunday availability sets us apart.',
     benefits: [
@@ -178,7 +178,7 @@ export default function ServicesPage() {
                       <ul className="space-y-4">
                         {svc.benefits.map((benefit) => (
                           <li key={benefit} className="flex items-start gap-3">
-                            <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-6 h-6 text-sc-teal flex-shrink-0" />
+                            <HugeiconsIcon icon={TickIcon} className="w-6 h-6 text-sc-terracotta flex-shrink-0" />
                             <span className="text-sc-navy font-bold leading-relaxed">
                               {benefit}
                             </span>
@@ -204,7 +204,7 @@ export default function ServicesPage() {
           <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
             {features.map((f) => (
               <div key={f} className="flex flex-col items-center text-center gap-4 bg-transparent rounded-[24px] p-6 border-[1.5px] border-sc-navy/10 hover:border-sc-terracotta transition-colors">
-                <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-8 h-8 text-sc-teal" />
+                <HugeiconsIcon icon={TickIcon} className="w-8 h-8 text-sc-terracotta" />
                 <span className="font-bold text-sc-navy text-sm leading-relaxed">
                   {f}
                 </span>

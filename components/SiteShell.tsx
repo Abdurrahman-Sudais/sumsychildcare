@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import ScrollAnimations from '@/components/ScrollAnimations'
+import PageLoader from '@/components/PageLoader'
 
 // Routes that should show NO navigation (standalone landing pages)
 const LANDING_ROUTES = ['/enroll']
@@ -24,6 +25,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <PageLoader />
       <Navbar />
       <main>{children}</main>
       <Footer />

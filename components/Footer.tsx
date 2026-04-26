@@ -55,7 +55,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="relative w-12 h-12">
+              <div className="relative w-12 h-12 bg-white/80 backdrop-blur-xl border border-sc-navy/10 rounded-full">
                 <Image
                   src={logo}
                   alt="Sumsy Childcare"
@@ -70,7 +70,7 @@ export default function Footer() {
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Ofsted-registered, owner-operated childcare in Eltham, SE9.
-              Safe, flexible care for children aged 5–16, seven days a week.
+              Safe, flexible care for children aged 6–16, seven days a week.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map(({ Icon, href, label, hover }) => (

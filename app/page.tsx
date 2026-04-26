@@ -3,25 +3,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
-  FavouriteIcon,
+  StarIcon as FavouriteIcon,
   ArrowRight01Icon,
   ArrowUpRight01Icon,
   SparklesIcon,
-  HealtcareIcon,
+  Medicine01Icon as HealthcareIcon,
   BadgeDollarSignIcon,
   UserGroupIcon,
   SmileIcon,
   Shield01Icon,
-  CheckmarkCircle01Icon,
+  CheckmarkBadge01Icon as TickIcon,
   QuoteUpIcon,
-  ChevronRight,
-  CircleUser
+  CallIcon,
+  Mail01Icon,
 } from '@hugeicons/core-free-icons'
+import heroImg from '@/app/Assets/SunsyCareHeroImage.png'
+import logo from '@/app/Assets/SunsyChildCare.png'
+import AnimateIn from '@/components/AnimateIn'
+import Magnetic from '@/components/Magnetic'
 
 export const metadata: Metadata = {
   title: 'Home | Sumsy Childcare Limited',
   description:
-    'Sumsy Childcare Limited: Ofsted-registered, professional childcare for children aged 5–16. Safe, stimulating environment in Eltham, SE9. Flexible hours 7 days a week.',
+    'Sumsy Childcare Limited: Ofsted-registered, professional childcare for children aged 6–16. Safe, stimulating environment in Eltham, SE9. Flexible hours 7 days a week.',
 }
 
 const testimonials = [
@@ -47,6 +51,41 @@ const facilityImages = [
   { src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', alt: 'Safe and welcoming entrance' },
 ]
 
+const programs = [
+  {
+    age: 'Infants',
+    range: '0 – 2 Years',
+    focus: 'Sensory play, nurturing environment, and milestone tracking.',
+    icon: '👶'
+  },
+  {
+    age: 'Toddlers',
+    range: '2 – 3 Years',
+    focus: 'Language development, social interaction, and motor skills.',
+    icon: '🧸'
+  },
+  {
+    age: 'Preschool',
+    range: '3 – 5 Years',
+    focus: 'Foundation for school, creative arts, and early literacy.',
+    icon: '🎨'
+  },
+  {
+    age: 'School Age',
+    range: '5 – 16 Years',
+    focus: 'After-school support, homework help, and engaging activities.',
+    icon: '📚'
+  }
+]
+
+const dailyRhythm = [
+  { time: '08:00 AM', activity: 'Arrival & Free Play', icon: SmileIcon },
+  { time: '10:00 AM', activity: 'Snack & Outdoor Play', icon: SparklesIcon },
+  { time: '12:00 PM', activity: 'Nutritious Lunch', icon: HealthcareIcon },
+  { time: '02:00 PM', activity: 'Quiet Time & Learning', icon: TickIcon },
+  { time: '04:00 PM', activity: 'Afternoon Tea & Creative Arts', icon: FavouriteIcon },
+]
+
 export default function HomePage() {
   return (
     <>
@@ -60,25 +99,36 @@ export default function HomePage() {
               <div className="text-sc-steel font-bold tracking-widest text-sm mb-6 uppercase">
                 [ Ofsted Registered ]
               </div>
-              <h1 className="text-5xl sm:text-7xl lg:text-[72px] font-bold text-sc-navy tracking-tight mb-8">
-                Your Trusted Caregivers for Lovely little ones
-              </h1>
-              <p className="text-md leading-7 text-sc-steel mb-10 max-w-lg">
-                Discover peace of mind with our trusted caregivers,
-                dedicated to providing expert care for your little ones.
-                From safety to joyous learning.
-              </p>
-              <div className="flex flex-row justify-between mb-12 max-w-[300px]">
-                <Link href="/contact" className="btn-primary px-6 py-3 text-base">
-                  Enroll Now
-                </Link>
-                
-                <span className='flex items-center'>or</span>
+              <AnimateIn direction="right" delay={0.1}>
+                <h1 className="text-5xl xs:text-6xl md:text-7xl lg:text-[88px] font-bold text-sc-navy leading-[0.9] tracking-tighter mb-8">
+                  Where <span className="text-sc-terracotta">Growth</span> <br />
+                  Begins with <br />
+                  Joyful Care.
+                </h1>
+              </AnimateIn>
+              
+              <AnimateIn direction="right" delay={0.2}>
+                <p className="text-lg md:text-xl text-sc-steel max-w-[480px] mb-10 leading-relaxed font-medium">
+                  Professional, Ofsted-registered childcare in Eltham, SE9.
+                  From safety to joyous learning.
+                </p>
+              </AnimateIn>
 
-                <Link href="/about" className="flex items-center justify-center text-sc-navy font-bold text-[17px] underline decoration-2 underline-offset-4 hover:decoration-sc-terracotta transition-colors">
-                  meet Our carer
-                </Link>
-              </div>
+              <AnimateIn direction="right" delay={0.3} className="flex flex-row items-center gap-6 mb-12 max-w-[400px]">
+                <Magnetic>
+                  <Link href="#enquire" className="btn-primary px-8 py-4 text-lg">
+                    Enroll Now
+                  </Link>
+                </Magnetic>
+                
+                <span className='text-sc-steel font-medium'>or</span>
+
+                <Magnetic>
+                  <Link href="/about" className="group flex items-center text-sc-navy font-bold text-[17px] underline decoration-2 underline-offset-4 hover:decoration-sc-terracotta transition-colors">
+                    Meet Our Carer
+                  </Link>
+                </Magnetic>
+              </AnimateIn>
             </div>
 
             {/* Right Content - Image composition */}
@@ -90,8 +140,8 @@ export default function HomePage() {
               {/* Main Image Container */}
               <div className="absolute inset-[16px] sm:inset-[24px] bg-sc-peach rounded-[32px] shadow-sm overflow-hidden z-10">
                 <Image
-                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=85"
-                  alt="Caregiver and child"
+                  src={heroImg}
+                  alt="Sumsy Childcare Hero"
                   fill
                   className="object-cover object-center"
                   priority
@@ -132,7 +182,7 @@ export default function HomePage() {
                 <div className="absolute inset-[1.5px] bg-sc-cream rounded-[28px] sm:rounded-[38.5px]"></div>
                 
                 <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-[20px] sm:rounded-[28px] shadow-xl overflow-hidden border-[1.5px] border-sc-navy/5 pointer-events-auto bg-sc-peach">
-                  <Image src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=85" fill className="object-cover object-[70%_70%]" alt="Detail" />
+                  <Image src={heroImg} fill className="object-cover object-[70%_70%]" alt="Detail" />
                   <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-11 sm:h-11 bg-sc-cream rounded-tl-[15px] sm:rounded-tl-[20px] flex items-center justify-center">
                     <svg className="w-4 h-4 sm:w-6 sm:h-6 text-sc-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M7 12a5 5 0 0 1 10 0" />
@@ -148,64 +198,123 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW BOTTOM CARDS matching the UI */}
-      <section className="pb-24 pt-10 bg-sc-cream">
+      {/* FLEXIBLE CARE SECTION (Replaced Programs) */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-[1fr_1.5fr] gap-6">
+          <AnimateIn className="text-center mb-16">
+            <h2 className="section-title">Flexible Care for Your Life</h2>
+            <p className="section-subtitle mx-auto">Providing reliable support for children aged 6–16, seven days a week.</p>
+          </AnimateIn>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                title: '7-Day Availability', 
+                desc: 'We understand that work doesn\'t always happen 9-5. We offer care every day of the week, including weekends.',
+                icon: SparklesIcon,
+                delay: 0.1
+              },
+              { 
+                title: 'School-Age Focus', 
+                desc: 'Specifically designed for children aged 6–16, with a balance of homework support and recreational fun.',
+                icon: UserGroupIcon,
+                delay: 0.2
+              },
+              { 
+                title: 'Personalized Attention', 
+                desc: 'As an owner-operated service, your child receives consistent, high-quality care from the same dedicated professional.',
+                icon: SmileIcon,
+                delay: 0.3
+              }
+            ].map((item) => (
+              <AnimateIn key={item.title} delay={item.delay} direction="up" distance={30}>
+                <div className="h-full p-10 rounded-[40px] bg-sc-cream border-[1.5px] border-sc-navy/5 hover:border-sc-terracotta/20 transition-all duration-300 hover:shadow-xl group">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-sc-navy/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <HugeiconsIcon icon={item.icon} className="w-7 h-7 text-sc-terracotta" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-sc-navy mb-4">{item.title}</h3>
+                  <p className="text-sc-steel leading-relaxed">{item.desc}</p>
+                </div>
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Card 1 */}
-            <div className="bg-transparent border-[1.5px] border-sc-navy rounded-[17px] px-6 py-4 relative rounded-tr-[80px] bg-white">
-              <div className="w-12 h-12 rounded-full border border-sc-peach flex items-center justify-center mb-2">
-                <HugeiconsIcon icon={HealtcareIcon} className="w-6 h-6 text-sc-terracotta" />
-              </div>
-              <h3 className="text-2xl font-bold text-sc-navy mb-4">
-                Professional Care
-              </h3>
-              <p className="text-sc-steel text-sm leading-relaxed max-w-[70%]">
-                We understand the importance of entrusting your children&apos;s well-being to capable and caring hands.
+      {/* TRUST & SAFETY SECTION */}
+      <section className="bg-sc-navy py-24 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimateIn direction="right">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Your Child&apos;s Safety is Our Absolute Priority</h2>
+              <p className="text-sc-sand text-lg mb-10 leading-relaxed">
+                We maintain the highest standards of safety and care, ensuring every child in our center is protected, nurtured, and respected.
               </p>
-              <div className="absolute top-7 right-7 bg-sc-navy w-12 h-12 rounded-full flex items-center justify-center cursor-pointer hover:bg-sc-terracotta transition-colors">
-                <HugeiconsIcon icon={ArrowUpRight01Icon} className="w-6 h-6 text-white" />
-              </div>
-            </div>
-
-            {/* Card 2 & 3 Combined */}
-            <div className="border-[1.5px] border-sc-navy rounded-[17px] pe-8 flex flex-col sm:flex-row gap-8 items-center bg-white">
-              <div className="border-e-[1.5px] border-e-sc-navy rounded-[17px] px-6 py-4 flex flex-col sm:flex-row gap-8 items-center bg-white">
-                <div className="flex-1">
-                  <div className="w-12 h-12 rounded-full border border-sc-peach flex items-center justify-center mb-2">
-                    <HugeiconsIcon icon={BadgeDollarSignIcon} className="w-6 h-6 text-sc-terracotta" />
+              <div className="grid sm:grid-cols-2 gap-8">
+                {[
+                  { title: 'Ofsted Registered', desc: 'Fully compliant with national standards.', icon: Shield01Icon },
+                  { title: 'Safe Recruitment', desc: 'Rigorous enhanced DBS background checks.', icon: UserGroupIcon },
+                  { title: 'First Aid Certified', desc: 'All staff trained in pediatric CPR & First Aid.', icon: HealthcareIcon },
+                  { title: 'Secure Access', desc: 'Modern security systems and entry protocols.', icon: Shield01Icon },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                      <HugeiconsIcon icon={item.icon} className="w-6 h-6 text-sc-terracotta" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
+                      <p className="text-sc-sand text-sm">{item.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-sc-navy mb-4">
-                    Low Cost Service
-                  </h3>
-                  <p className="text-sc-steel text-sm leading-relaxed max-w-[70%]">
-                    We believe that every child deserves exceptional care, regardless of budget constraints.
-                  </p>
-                </div>
+                ))}
+              </div>
+            </AnimateIn>
+            <AnimateIn direction="left" delay={0.2} className="relative aspect-square max-w-[500px] mx-auto lg:ml-auto">
+              <Image
+                src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80"
+                alt="Safe and happy children"
+                fill
+                className="rounded-[40px] object-cover border-4 border-white/10 shadow-2xl"
+              />
+            </AnimateIn>
+          </div>
+        </div>
+      </section>
 
-                {/* Right inner section */}
-                <div className="sm:w-[200px] flex flex-col justify-between h-full shrink-0 py-3">
-                  <h4 className="text-[26px] font-bold text-sc-navy italic leading-8">
-                    More Than 50 Caregivers
-                  </h4>
-                  <div className="flex -space-x-3 ">
-                    <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="avatar 1" />
-                    <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="avatar 2" />
-                    <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="avatar 3" />
+      {/* DAILY RHYTHM SECTION */}
+      <section className="py-24 bg-sc-cream relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="section-title">A Day in the Life</h2>
+            <p className="section-subtitle mx-auto">Our daily rhythm provides the perfect balance of structure and spontaneous fun.</p>
+          </div>
+          <div className="relative">
+            {/* Horizontal line for desktop */}
+            <div className="hidden lg:block absolute top-12 left-0 w-full h-[1.5px] bg-sc-navy/10"></div>
+            
+            <div className="grid lg:grid-cols-5 gap-12 lg:gap-6">
+              {dailyRhythm.map((item, idx) => (
+                <div key={item.activity} className="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:gap-0">
+                  <div className="w-24 h-24 rounded-3xl bg-white border-[1.5px] border-sc-navy flex items-center justify-center mb-6 shadow-sm shrink-0 lg:group-hover:bg-sc-terracotta lg:transition-colors">
+                    <HugeiconsIcon icon={item.icon} className="w-10 h-10 text-sc-terracotta" />
+                  </div>
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-sc-terracotta text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
+                      {item.time}
+                    </span>
+                    <h4 className="text-lg font-bold text-sc-navy">{item.activity}</h4>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ADAPTED ABOUT SECTION */}
-      <section className="bg-white py-24 rounded-t-[3rem] border-t border-sc-navy/5">
+      {/* ABOUT SECTION */}
+      <section className="py-24 bg-white" id="about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal-left relative">
+            <AnimateIn direction="right" className="relative">
               <Image
                 src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80"
                 alt="Sumsy Childcare facility"
@@ -222,83 +331,170 @@ export default function HomePage() {
                   <p className="text-sm opacity-90">Eltham, SE9</p>
                 </div>
               </div>
-            </div>
-            <div className="reveal-right">
+            </AnimateIn>
+            <AnimateIn direction="left" delay={0.2}>
               <h2 className="section-title mb-6">Dedicated, Personal Care for Every Child</h2>
               <p className="text-sc-steel text-lg leading-relaxed mb-6">
                 Sumsy Childcare Limited is an owner-operated childcare
                 service based in Eltham, SE9. We specialise in safe, reliable, and nurturing
-                care for children aged 5 to 16 — with flexible hours that genuinely work for
+                care for children aged 6 to 16 — with flexible hours that genuinely work for
                 busy families.
               </p>
               <ul className="space-y-4 mb-8">
-                {['Consistent, personal attention from the owner', 'Flexible hours including evenings and weekends', 'Quick response via phone or WhatsApp'].map((r) => (
-                  <li key={r} className="flex items-start gap-3 text-sc-steel">
-                    <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-6 h-6 text-sc-teal flex-shrink-0" />
-                    <span>{r}</span>
+                {[
+                  'Qualified and experienced caregivers',
+                  'Stimulating indoor and outdoor activities',
+                  'Flexible sessions tailored to your needs',
+                  'Ofsted-registered safe environment',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sc-navy font-bold">
+                    <div className="w-6 h-6 rounded-full bg-sc-terracotta/10 flex items-center justify-center">
+                      <HugeiconsIcon icon={TickIcon} className="w-3.5 h-3.5 text-sc-terracotta" />
+                    </div>
+                    {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/about" className="btn-secondary">
-                Learn More About Us
-              </Link>
-            </div>
+              <Magnetic>
+                <Link href="#enquire" className="btn-primary px-8 py-4">
+                  Learn More About Us
+                </Link>
+              </Magnetic>
+            </AnimateIn>
           </div>
         </div>
       </section>
 
-      {/* ADAPTED TESTIMONIALS */}
-      <section className="bg-sc-sand py-24">
+      {/* TESTIMONIALS SECTION */}
+      <section className="py-24 bg-sc-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 reveal">
-            <h2 className="section-title">What Families Are Saying</h2>
-            <p className="section-subtitle mx-auto">Hear from parents across SE9 who trust us with their most precious ones.</p>
-          </div>
+          <AnimateIn className="text-center mb-16">
+            <h2 className="section-title">What Parents Say</h2>
+            <p className="section-subtitle mx-auto">Real stories from families in our community.</p>
+          </AnimateIn>
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((t, i) => (
-              <div key={t.name} className="reveal bg-white border border-sc-navy/10 rounded-[32px] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <HugeiconsIcon icon={QuoteUpIcon} className="w-8 h-8 text-sc-terracotta mb-6" />
-                <p className="text-sc-navy text-lg leading-relaxed mb-8 font-medium">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-sc-terracotta/10 text-sc-terracotta flex items-center justify-center font-bold text-lg">
-                    {t.avatar}
+              <AnimateIn key={t.name} delay={i * 0.1} direction="up" distance={20}>
+                <div className="h-full bg-white border border-sc-navy/10 rounded-[32px] p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <HugeiconsIcon key={i} icon={FavouriteIcon} className="w-5 h-5 text-sc-terracotta fill-sc-terracotta group-hover:scale-110 transition-transform" />
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-bold text-sc-navy">{t.name}</p>
-                    <p className="text-sm text-sc-steel">{t.role}</p>
+                  <HugeiconsIcon icon={QuoteUpIcon} className="w-8 h-8 text-sc-terracotta/20 mb-6" />
+                  <p className="text-sc-navy text-lg leading-relaxed mb-8 font-medium">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-sc-terracotta/10 text-sc-terracotta flex items-center justify-center font-bold text-lg">
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <p className="font-bold text-sc-navy">{t.name}</p>
+                      <p className="text-sm text-sc-steel">{t.role}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="bg-sc-navy py-24 relative overflow-hidden text-center text-white">
-        <div className="max-w-3xl mx-auto px-4 relative z-10">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-            Ready to Find Great Childcare?
-          </h2>
-          <p className="text-sc-sand text-lg mb-10">
-            Get in touch today — by phone, WhatsApp, or email. We would love
-            to hear about your child and find a care arrangement that works for your family.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn-primary">
-              Contact Us Now
-            </Link>
-            <a
-              href="https://wa.me/447448364115?text=Hi%20Sumsy%20Childcare!%20I'd%20like%20to%20enquire%20about%20childcare."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-transparent text-white border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-sc-navy transition-all duration-300"
-            >
-              WhatsApp Us
-              <HugeiconsIcon icon={ChevronRight} className="w-5 h-5" />
-            </a>
+      {/* FAQ SECTION */}
+      <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <AnimateIn className="text-center mb-16">
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-subtitle mx-auto">Common questions parents ask about our center.</p>
+          </AnimateIn>
+          <div className="space-y-4">
+            {[
+              { q: 'What are your opening hours?', a: 'We offer flexible hours 7 days a week, typically from 8:00 AM to 6:30 PM, but we can discuss specific arrangements for your family.' },
+              { q: 'Is there an enrollment fee?', a: 'We have a simple registration process. Contact us for our current fee schedule and to discuss available slots.' },
+              { q: 'What is your sick policy?', a: 'To ensure the health of all children, we ask that children with a fever or contagious illness stay home until they are symptom-free for 24 hours.' },
+              { q: 'Are you Ofsted registered?', a: 'Yes! Sumsy Childcare is fully Ofsted registered, and we maintain the highest standards of safety and educational care.' },
+            ].map((faq, i) => (
+              <AnimateIn key={faq.q} delay={i * 0.1} direction="none" distance={0}>
+                <details className="group border-[1.5px] border-sc-navy/10 rounded-2xl overflow-hidden transition-all duration-300">
+                  <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-sc-navy bg-white hover:bg-sc-cream transition-colors list-none">
+                    {faq.q}
+                    <HugeiconsIcon icon={ArrowRight01Icon} className="w-5 h-5 text-sc-terracotta group-open:rotate-90 transition-transform" />
+                  </summary>
+                  <div className="p-6 pt-0 text-sc-steel leading-relaxed bg-white">
+                    {faq.a}
+                  </div>
+                </details>
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA & LEAD CAPTURE */}
+      <section className="bg-sc-navy py-24 relative overflow-hidden text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimateIn direction="right">
+              <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to join our family?</h2>
+              <p className="text-xl text-sc-sand mb-12 max-w-lg leading-relaxed">
+                Contact us today to arrange a visit or to discuss your child&apos;s 
+                needs. We can&apos;t wait to meet you!
+              </p>
+              
+              <div className="flex flex-col gap-6">
+                <a href="tel:+447448364115" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sc-terracotta transition-colors">
+                    <HugeiconsIcon icon={CallIcon} className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-sc-sand uppercase tracking-widest">Call Us</p>
+                    <span className="text-lg font-bold">07448 364115</span>
+                  </div>
+                </a>
+                <a href="https://wa.me/447448364115" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sc-terracotta transition-colors">
+                    <HugeiconsIcon icon={ArrowRight01Icon} className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg font-bold">Chat on WhatsApp</span>
+                </a>
+                <a href="Sumsychildcareltd@myyahoo.com" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sc-terracotta transition-colors">
+                    <HugeiconsIcon icon={Mail01Icon} className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg font-bold">Sumsychildcareltd@myyahoo.com</span>
+                </a>
+              </div>
+            </AnimateIn>
+            
+            <AnimateIn id="enquire" direction="left" delay={0.2} className="bg-white rounded-[40px] p-8 md:p-12 text-sc-navy shadow-2xl">
+              <h3 className="text-3xl font-bold mb-8">Enquire Now</h3>
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Parent Name</label>
+                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Full Name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Child&apos;s Age</label>
+                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Age" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Email Address</label>
+                  <input type="email" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Sumsychildcareltd@myyahoo.com" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Message</label>
+                  <textarea rows={4} className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="How can we help?"></textarea>
+                </div>
+                <Magnetic>
+                  <button className="w-full btn-primary py-5 text-xl">
+                    Submit Enquiry
+                  </button>
+                </Magnetic>
+              </form>
+            </AnimateIn>
           </div>
         </div>
       </section>

@@ -3,7 +3,18 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Cancel01Icon, ZoomIn, Image01Icon, Home01Icon, PineTreeIcon, LayerIcon } from '@hugeicons/core-free-icons'
+import { 
+  Cancel01Icon, 
+  Search01Icon as ZoomIn, 
+  Image01Icon, 
+  Home01Icon, 
+  PineTreeIcon, 
+  LayerIcon,
+  ArrowRight01Icon,
+  ArrowLeft01Icon
+} from '@hugeicons/core-free-icons'
+import AnimateIn from '@/components/AnimateIn'
+import Magnetic from '@/components/Magnetic'
 
 const galleryImages = [
   {
@@ -80,72 +91,74 @@ export default function GalleryPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-32 pb-16 bg-sc-sand">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-white text-sc-terracotta px-4 py-1.5 rounded-full text-sm font-bold mb-5 border border-sc-navy/10 shadow-sm">
-            <HugeiconsIcon icon={Image01Icon} className="w-4 h-4" />
-            Facility Gallery
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-sc-navy mb-6 tracking-tight">
-            Our Facility in Eltham
-          </h1>
-          <p className="text-lg text-sc-steel max-w-2xl mx-auto leading-relaxed">
-            A safe, bright, and stimulating environment — purpose-designed for
-            children aged 5–16 to feel comfortable, engaged, and happy.
-          </p>
+      <section className="pt-40 pb-24 bg-sc-cream relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <AnimateIn direction="up">
+            <div className="inline-flex items-center gap-2 bg-white text-sc-terracotta px-4 py-1.5 rounded-full text-sm font-bold mb-5 border border-sc-navy/10 shadow-sm">
+              <HugeiconsIcon icon={Image01Icon} className="w-4 h-4" />
+              Facility Gallery
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-sc-navy mb-6 tracking-tight">
+              Our Facility in <span className="text-sc-terracotta">Eltham</span>
+            </h1>
+            <p className="text-xl text-sc-steel max-w-2xl mx-auto leading-relaxed">
+              A safe, bright, and stimulating environment — purpose-designed for
+              children aged 6–16 to feel comfortable, engaged, and happy.
+            </p>
+          </AnimateIn>
         </div>
       </section>
 
       {/* GALLERY */}
-      <section className="bg-white py-20 rounded-t-[3rem] -mt-8 border-t border-sc-navy/5 relative z-10">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-3 justify-center mb-16">
-            {categories.map(({ key, label, icon: Icon }) => (
-              <button
-                key={key}
-                onClick={() => setActiveCategory(key)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 border-[1.5px] ${
-                  activeCategory === key
-                    ? 'bg-sc-navy text-white border-sc-navy shadow-md'
-                    : 'bg-transparent text-sc-navy border-sc-navy/20 hover:border-sc-terracotta hover:text-sc-terracotta'
-                }`}
-              >
-                <HugeiconsIcon icon={Icon} className="w-4 h-4" />
-                {label}
-              </button>
+          <AnimateIn direction="up" delay={0.2} className="flex flex-wrap gap-3 justify-center mb-16">
+            {categories.map((cat) => (
+              <Magnetic key={cat.key}>
+                <button
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 border-[1.5px] ${
+                    activeCategory === cat.key
+                      ? 'bg-sc-navy text-white border-sc-navy shadow-md'
+                      : 'bg-transparent text-sc-navy border-sc-navy/20 hover:border-sc-terracotta hover:text-sc-terracotta'
+                  }`}
+                >
+                  <HugeiconsIcon icon={cat.icon} className="w-4 h-4" />
+                  {cat.label}
+                </button>
+              </Magnetic>
             ))}
-          </div>
+          </AnimateIn>
 
-          {/* Image Grid */}
-          <div className="columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((img, index) => (
-              <div
-                key={img.src + index}
-                className="break-inside-avoid cursor-pointer group relative rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-sc-navy/5"
+              <AnimateIn 
+                key={img.src + index} 
+                direction="up" 
+                delay={index * 0.05}
+                className="group relative aspect-square rounded-[32px] overflow-hidden cursor-pointer bg-sc-cream shadow-sm hover:shadow-2xl transition-all duration-500"
                 onClick={() => setLightboxIndex(index)}
               >
                 <Image
                   src={img.thumb}
                   alt={img.alt}
-                  width={400}
-                  height={300}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-sc-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                  <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center border border-white/30">
-                    <HugeiconsIcon icon={ZoomIn} className="w-6 h-6 text-white" />
+                <div className="absolute inset-0 bg-sc-navy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500">
+                    <HugeiconsIcon icon={ZoomIn} className="w-6 h-6 text-sc-navy" />
                   </div>
                 </div>
-              </div>
+              </AnimateIn>
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <div className="text-center py-20 text-sc-steel/40">
+            <AnimateIn direction="up" className="text-center py-20 text-sc-steel/40">
               <HugeiconsIcon icon={Image01Icon} className="w-16 h-16 mx-auto mb-4 opacity-20" />
               <p className="text-lg">No photos in this category yet.</p>
-            </div>
+            </AnimateIn>
           )}
         </div>
       </section>
