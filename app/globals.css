@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================
+   CSS Custom Properties
+   ===================== */
+:root {
+  --color-brand-blue: #4AB8E8;
+  --color-brand-green: #6DD5A3;
+  --color-brand-yellow: #FFD166;
+  --color-brand-coral: #FF8C74;
+  --color-brand-navy: #2D4A8A;
+  --color-bg-soft: #F8FBFF;
+  --color-text: #2C3E50;
+  --color-muted: #6B7280;
+  --radius-card: 1.25rem;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.07);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+  --transition-smooth: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* =====================
+   Base Styles
+   ===================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Quicksand', system-ui, sans-serif;
+  color: var(--color-text);
+  background-color: #ffffff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* =====================
+   Scroll Animations
+   ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =====================
+   Component Utilities
+   ===================== */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#4AB8E8] hover:bg-[#2D9FD4] text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white hover:bg-[#F0F9FF] text-[#2D4A8A] font-bold px-6 py-3 rounded-2xl border-2 border-[#4AB8E8] hover:border-[#2D9FD4] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .btn-green {
+    @apply inline-flex items-center gap-2 bg-[#6DD5A3] hover:bg-[#50C490] text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-hover)] transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold text-[#2D4A8A];
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-[#6B7280] font-medium mt-3 max-w-2xl mx-auto;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full;
+  }
+}
+
+/* =====================
+   Custom Scrollbar
+   ===================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #4AB8E8;
+  border-radius: 4px;
+}
+
+/* =====================
+   Form Styles
+   ===================== */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #E5E7EB;
+  border-radius: 0.75rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+  color: #2C3E50;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4AB8E8;
+  box-shadow: 0 0 0 3px rgba(74,184,232,0.15);
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #2D4A8A;
+  margin-bottom: 0.4rem;
+}
+
+/* =====================
+   Hero Background Pattern
+   ===================== */
+.hero-pattern {
+  background-color: #F0F9FF;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(74,184,232,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(109,213,163,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(255,209,102,0.08) 0%, transparent 40%);
+}
+
+.dots-pattern {
+  background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* =====================
+   Floating WhatsApp
+   ===================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  animation: floatWA 3s ease-in-out infinite;
+}
+
+@keyframes floatWA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* =====================
+   Testimonial Card
+   ===================== */
+.testimonial-card {
+  background: linear-gradient(135deg, #ffffff, #F8FBFF);
+  border: 1px solid rgba(74,184,232,0.1);
+}
+
+/* =====================
+   Nav Active State
+   ===================== */
+.nav-link-active {
+  color: #4AB8E8;
+  font-weight: 700;
+}
+
+/* =====================
+   Gradient Text
+   ===================== */
+.gradient-text {
+  background: linear-gradient(135deg, #4AB8E8, #6DD5A3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =====================
+   Image Overlay
+   ===================== */
+.img-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(45,74,138,0.5) 0%, transparent 60%);
+}
