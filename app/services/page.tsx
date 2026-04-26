@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { HugeiconsIcon } from '@hugeicons/react'
 import {
-  Sun,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Users,
-  ArrowRight,
-  Heart,
-  Star,
-  BookOpen,
-  Home,
-  Coffee,
-  Plane,
-} from 'lucide-react'
+  Sun01Icon,
+  Calendar01Icon,
+  CheckmarkCircle01Icon,
+  Clock01Icon,
+  UserGroupIcon,
+  ArrowRight01Icon,
+  FavouriteIcon,
+  StarIcon,
+  BookOpen01Icon,
+  Coffee01Icon,
+  Airplane01Icon
+} from '@hugeicons/core-free-icons'
 
 export const metadata: Metadata = {
   title: 'Our Services | Sumsy Childcare Limited',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const services = [
   {
     id: 'afterschool',
-    icon: Sun,
+    icon: Sun01Icon,
     title: 'After-School Care',
     tagline: 'Safe, Supervised & Fun After the School Day',
     ageRange: '5–16 years',
@@ -39,14 +39,10 @@ const services = [
       'Flexible booking — regular or ad hoc',
     ],
     schedule: 'Monday – Friday, from 3:00 PM up to 9:00 PM',
-    color: 'from-[#4AB8E8] to-[#2D9FD4]',
-    bg: 'bg-sky-50',
-    badge: 'bg-sky-100 text-sky-700',
-    border: 'border-sky-100',
   },
   {
     id: 'beforeschool',
-    icon: Coffee,
+    icon: Coffee01Icon,
     title: 'Before-School Care',
     tagline: 'A Calm, Positive Start to the Day',
     ageRange: '5–16 years',
@@ -61,14 +57,10 @@ const services = [
       'Easy drop-off, no fuss',
     ],
     schedule: 'Monday – Friday, 7:00 AM – school start time',
-    color: 'from-[#6DD5A3] to-[#50C490]',
-    bg: 'bg-green-50',
-    badge: 'bg-green-100 text-green-700',
-    border: 'border-green-100',
   },
   {
     id: 'holiday',
-    icon: Plane,
+    icon: Airplane01Icon,
     title: 'Holiday & School Break Cover',
     tagline: 'Continuous Care When School Is Out',
     ageRange: '5–16 years',
@@ -83,14 +75,10 @@ const services = [
       'Consistent carer your child already knows',
     ],
     schedule: 'School holiday periods — 8:00 AM to 6:00 PM',
-    color: 'from-[#FFD166] to-[#F59E0B]',
-    bg: 'bg-yellow-50',
-    badge: 'bg-yellow-100 text-yellow-700',
-    border: 'border-yellow-100',
   },
   {
     id: 'flexible',
-    icon: Calendar,
+    icon: Calendar01Icon,
     title: 'Flexible & Weekend Care',
     tagline: 'Care When Life Is Unpredictable',
     ageRange: '5–16 years',
@@ -105,10 +93,6 @@ const services = [
       'Contact us via WhatsApp for quick availability checks',
     ],
     schedule: 'Sat 10:00 AM–8:00 PM · Sun 11:00 AM–6:00 PM',
-    color: 'from-[#B5A4E8] to-[#8B73D6]',
-    bg: 'bg-purple-50',
-    badge: 'bg-purple-100 text-purple-700',
-    border: 'border-purple-100',
   },
 ]
 
@@ -127,19 +111,16 @@ export default function ServicesPage() {
   return (
     <>
       {/* HERO */}
-      <section className="hero-pattern pt-28 pb-16">
+      <section className="pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#4AB8E8]/10 text-[#2D4A8A] px-4 py-1.5 rounded-full text-sm font-bold mb-5"
-            style={{ fontFamily: 'Nunito, sans-serif' }}>
-            <BookOpen className="w-4 h-4 text-[#4AB8E8]" />
+          <div className="inline-flex items-center gap-2 bg-white text-sc-terracotta px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-sc-navy/10 shadow-sm">
+            <HugeiconsIcon icon={BookOpen01Icon} className="w-4 h-4" />
             Our Services
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#2D4A8A] mb-5"
-            style={{ fontFamily: 'Nunito, sans-serif' }}>
-            Childcare for Ages 5–16 in Eltham
+          <h1 className="text-5xl md:text-6xl lg:text-[72px] font-bold text-sc-navy mb-6 tracking-tight">
+            Childcare for Ages 5–16 <br className="hidden md:block" /> in Eltham
           </h1>
-          <p className="text-lg text-[#4B5563] max-w-2xl mx-auto leading-relaxed"
-            style={{ fontFamily: 'Quicksand, sans-serif' }}>
+          <p className="text-lg text-sc-steel max-w-2xl mx-auto leading-relaxed">
             Flexible, Ofsted-registered care before school, after school, during holidays
             and at weekends — designed around working families in SE9.
           </p>
@@ -147,57 +128,58 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICE CARDS */}
-      <section className="bg-white py-20">
+      <section className="bg-transparent py-10 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {services.map((svc, i) => {
               const Icon = svc.icon
               return (
-                <div key={svc.id} id={svc.id} className={`reveal card border ${svc.border} overflow-hidden`}>
-                  <div className={`grid lg:grid-cols-2 gap-8`}>
+                <div key={svc.id} id={svc.id} className="reveal bg-white border-[1.5px] border-sc-navy rounded-[32px] overflow-hidden p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
                     <div className="flex flex-col justify-center">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center shadow-md flex-shrink-0`}>
-                          <Icon className="w-7 h-7 text-white" />
+                      <div className="flex items-center gap-5 mb-6">
+                        <div className="w-16 h-16 rounded-[20px] bg-sc-terracotta flex items-center justify-center shadow-lg shadow-sc-terracotta/30 flex-shrink-0">
+                          <HugeiconsIcon icon={Icon} className="w-8 h-8 text-white" />
                         </div>
                         <div>
-                          <h2 className="text-2xl font-extrabold text-[#2D4A8A]" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                          <h2 className="text-3xl font-bold text-sc-navy mb-1">
                             {svc.title}
                           </h2>
-                          <p className="text-sm font-semibold text-[#6B7280]" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                          <p className="text-sc-steel font-bold">
                             {svc.tagline}
                           </p>
                         </div>
                       </div>
-                      <div className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full ${svc.badge} self-start mb-4`}>
-                        <Users className="w-3 h-3" />
+                      <div className="inline-flex items-center gap-2 text-sm font-bold px-4 py-1.5 rounded-full bg-sc-cream text-sc-terracotta self-start mb-6 border border-sc-terracotta/20">
+                        <HugeiconsIcon icon={UserGroupIcon} className="w-4 h-4" />
                         Age: {svc.ageRange}
                       </div>
-                      <p className="text-[#4B5563] leading-relaxed mb-6" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                      <p className="text-sc-steel leading-relaxed mb-8 text-lg">
                         {svc.description}
                       </p>
-                      <div className="flex items-start gap-2 mb-6 text-sm">
-                        <Clock className="w-4 h-4 text-[#4AB8E8] mt-0.5 flex-shrink-0" />
+                      <div className="flex items-start gap-3 mb-8 bg-sc-sand/30 rounded-2xl p-4 border border-sc-sand/50">
+                        <HugeiconsIcon icon={Clock01Icon} className="w-5 h-5 text-sc-navy mt-0.5 flex-shrink-0" />
                         <div>
-                          <span className="font-bold text-[#2D4A8A]" style={{ fontFamily: 'Nunito, sans-serif' }}>Schedule: </span>
-                          <span className="text-[#6B7280]" style={{ fontFamily: 'Quicksand, sans-serif' }}>{svc.schedule}</span>
+                          <span className="font-bold text-sc-navy">Schedule: </span>
+                          <span className="text-sc-steel">{svc.schedule}</span>
                         </div>
                       </div>
-                      <Link href="/contact" className="btn-primary self-start">
-                        <Heart className="w-4 h-4" />
+                      <Link href="/contact" className="btn-primary self-start shadow-none border-[1.5px] border-transparent hover:border-sc-terracotta hover:bg-white hover:text-sc-terracotta">
+                        <HugeiconsIcon icon={FavouriteIcon} className="w-5 h-5" />
                         Enquire About This Service
                       </Link>
                     </div>
-                    <div className={`${svc.bg} rounded-2xl p-6`}>
-                      <h4 className="font-extrabold text-[#2D4A8A] mb-4 flex items-center gap-2" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                        <Star className="w-4 h-4 text-[#FFD166]" />
+                    
+                    <div className="bg-sc-cream rounded-[24px] p-8 border border-sc-terracotta/10">
+                      <h4 className="text-xl font-bold text-sc-navy mb-6 flex items-center gap-3">
+                        <HugeiconsIcon icon={StarIcon} className="w-6 h-6 text-sc-peach fill-sc-peach" />
                         What&apos;s Included
                       </h4>
-                      <ul className="space-y-3">
+                      <ul className="space-y-4">
                         {svc.benefits.map((benefit) => (
-                          <li key={benefit} className="flex items-start gap-2.5">
-                            <CheckCircle className="w-5 h-5 text-[#6DD5A3] flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-[#374151]" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                          <li key={benefit} className="flex items-start gap-3">
+                            <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-6 h-6 text-sc-teal flex-shrink-0" />
+                            <span className="text-sc-navy font-bold leading-relaxed">
                               {benefit}
                             </span>
                           </li>
@@ -213,17 +195,17 @@ export default function ServicesPage() {
       </section>
 
       {/* ALWAYS INCLUDED */}
-      <section className="bg-[#F8FBFF] py-20">
+      <section className="bg-white py-24 rounded-t-[3rem] border-t border-sc-navy/5">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 reveal">
+          <div className="text-center mb-16 reveal">
             <h2 className="section-title">Every Session Includes</h2>
-            <p className="section-subtitle">These standards apply across all our services, every single day.</p>
+            <p className="section-subtitle mx-auto">These standards apply across all our services, every single day.</p>
           </div>
-          <div className="reveal grid sm:grid-cols-2 gap-4">
+          <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
             {features.map((f) => (
-              <div key={f} className="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 shadow-soft border border-sky-50">
-                <CheckCircle className="w-5 h-5 text-[#6DD5A3] flex-shrink-0" />
-                <span className="font-semibold text-[#2D4A8A] text-sm" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <div key={f} className="flex flex-col items-center text-center gap-4 bg-transparent rounded-[24px] p-6 border-[1.5px] border-sc-navy/10 hover:border-sc-terracotta transition-colors">
+                <HugeiconsIcon icon={CheckmarkCircle01Icon} className="w-8 h-8 text-sc-teal" />
+                <span className="font-bold text-sc-navy text-sm leading-relaxed">
                   {f}
                 </span>
               </div>
@@ -233,29 +215,27 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-[#2D4A8A] to-[#1E3A6E] py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="bg-sc-navy py-24 text-center">
+        <div className="max-w-3xl mx-auto px-4">
           <div className="reveal">
-            <h2 className="text-3xl font-extrabold text-white mb-4" style={{ fontFamily: 'Nunito, sans-serif' }}>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Not Sure Which Option Is Right?
             </h2>
-            <p className="text-white/80 text-lg mb-8" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+            <p className="text-sc-sand text-lg mb-10">
               Get in touch and we will find the best care arrangement for your child and your schedule.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact" className="btn-primary">
-                <Heart className="w-5 h-5" />
                 Contact Us
               </Link>
               <a
                 href="https://wa.me/447448364115?text=Hi%20Sumsy%20Childcare!%20I'd%20like%20to%20find%20out%20more%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold px-6 py-3 rounded-2xl border border-white/20 transition-all duration-300"
-                style={{ fontFamily: 'Nunito, sans-serif' }}
+                className="flex items-center gap-2 bg-transparent text-white border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-sc-navy transition-all duration-300"
               >
                 WhatsApp Us
-                <ArrowRight className="w-5 h-5" />
+                <HugeiconsIcon icon={ArrowRight01Icon} className="w-5 h-5" />
               </a>
             </div>
           </div>

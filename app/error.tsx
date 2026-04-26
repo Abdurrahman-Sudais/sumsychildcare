@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { RefreshCw, Home } from 'lucide-react'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Refresh01Icon, Home01Icon, Alert01Icon } from '@hugeicons/core-free-icons'
 
-// app/error.tsx — shown when an unhandled error occurs
 export default function Error({
   error,
   reset,
@@ -13,36 +13,32 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log error to monitoring service in production
     console.error(error)
   }, [error])
 
   return (
-    <section className="hero-pattern min-h-screen flex items-center justify-center pt-20 px-4">
+    <section className="min-h-screen flex items-center justify-center pt-20 px-4 bg-sc-cream font-quicksand">
       <div className="max-w-lg w-full text-center">
-        {/* Icon */}
-        <div className="w-20 h-20 bg-gradient-to-br from-[#FF8C74] to-[#E8634F] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-          <span className="text-3xl">⚠️</span>
+        <div className="w-20 h-20 bg-sc-terracotta rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-sc-terracotta/20">
+          <HugeiconsIcon icon={Alert01Icon} className="w-10 h-10 text-white" />
         </div>
 
-        <h1 className="text-3xl font-extrabold text-[#2D4A8A] mb-3"
-          style={{ fontFamily: 'Nunito, sans-serif' }}>
+        <h1 className="text-4xl font-bold text-sc-navy mb-4">
           Something Went Wrong
         </h1>
 
-        <p className="text-[#6B7280] mb-8 leading-relaxed"
-          style={{ fontFamily: 'Quicksand, sans-serif' }}>
-          We hit an unexpected snag. Don&apos;t worry — our team has been
-          notified. Please try again or head back home.
+        <p className="text-sc-steel mb-10 leading-relaxed font-bold">
+          We hit an unexpected snag. Don't worry — we're on it. 
+          Please try again or head back home.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onClick={reset} className="btn-primary">
-            <RefreshCw className="w-5 h-5" />
+          <button onClick={reset} className="bg-sc-terracotta text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-sc-navy transition-all shadow-lg flex items-center justify-center gap-2">
+            <HugeiconsIcon icon={Refresh01Icon} className="w-5 h-5" />
             Try Again
           </button>
-          <Link href="/" className="btn-secondary">
-            <Home className="w-5 h-5" />
+          <Link href="/" className="bg-white text-sc-navy px-8 py-4 rounded-2xl font-bold text-sm border border-sc-navy/10 hover:border-sc-terracotta transition-all shadow-sm flex items-center justify-center gap-2">
+            <HugeiconsIcon icon={Home01Icon} className="w-5 h-5" />
             Back to Home
           </Link>
         </div>

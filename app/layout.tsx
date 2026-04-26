@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import WhatsAppFloat from '@/components/WhatsAppFloat'
-import ScrollAnimations from '@/components/ScrollAnimations'
+import SiteShell from '@/components/SiteShell'
 
 export const metadata: Metadata = {
   title: {
@@ -53,16 +50,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <ScrollAnimations />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   )

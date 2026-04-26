@@ -1,5 +1,8 @@
 import Link from 'next/link'
-import { Sun, MapPin, Phone, Mail, Heart } from 'lucide-react'
+import Image from 'next/image'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Sun01Icon, MapPinIcon, Call02Icon, Mail01Icon, FavouriteIcon } from '@hugeicons/core-free-icons'
+import logo from '@/app/Assets/SunsyChildCare.png'
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
@@ -45,22 +48,27 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#1E3A6E] text-white pt-16 pb-6">
+    <footer className="bg-sc-navy text-white pt-16 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#4AB8E8] to-[#6DD5A3] rounded-2xl flex items-center justify-center">
-                <Sun className="w-5 h-5 text-white" strokeWidth={2.5} />
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="relative w-12 h-12">
+                <Image
+                  src={logo}
+                  alt="Sumsy Childcare"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-xl font-extrabold leading-tight" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                Sumsy<span className="text-[#4AB8E8]"> Childcare</span>
-                <span className="block text-xs font-semibold text-white/50 tracking-wide">Limited</span>
+              <span className="text-xl font-bold leading-tight">
+                Sumsy<span className="text-sc-terracotta"> Childcare</span>
+                <span className="block text-xs font-bold text-white/50 tracking-wide">Limited</span>
               </span>
             </Link>
-            <p className="text-white/70 text-sm leading-relaxed mb-6" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+            <p className="text-white/70 text-sm leading-relaxed mb-6">
               Ofsted-registered, owner-operated childcare in Eltham, SE9.
               Safe, flexible care for children aged 5–16, seven days a week.
             </p>
@@ -76,16 +84,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-base font-bold text-white mb-5" style={{ fontFamily: 'Nunito, sans-serif' }}>
+            <h3 className="text-base font-bold text-white mb-5">
               Quick Links
             </h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href}
-                    className="text-white/65 hover:text-[#4AB8E8] text-sm font-medium transition-colors flex items-center gap-1.5"
-                    style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    <span className="w-1 h-1 rounded-full bg-[#4AB8E8] opacity-70" />
+                    className="text-white/65 hover:text-sc-terracotta text-sm font-bold transition-colors flex items-center gap-1.5">
+                    <span className="w-1 h-1 rounded-full bg-sc-terracotta opacity-70" />
                     {link.label}
                   </Link>
                 </li>
@@ -95,16 +102,15 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-base font-bold text-white mb-5" style={{ fontFamily: 'Nunito, sans-serif' }}>
+            <h3 className="text-base font-bold text-white mb-5">
               Our Services
             </h3>
             <ul className="space-y-2.5">
               {serviceLinks.map((label) => (
                 <li key={label}>
                   <Link href="/services"
-                    className="text-white/65 hover:text-[#6DD5A3] text-sm font-medium transition-colors flex items-center gap-1.5"
-                    style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    <span className="w-1 h-1 rounded-full bg-[#6DD5A3] opacity-70" />
+                    className="text-white/65 hover:text-sc-teal text-sm font-bold transition-colors flex items-center gap-1.5">
+                    <span className="w-1 h-1 rounded-full bg-sc-teal opacity-70" />
                     {label}
                   </Link>
                 </li>
@@ -114,46 +120,44 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-base font-bold text-white mb-5" style={{ fontFamily: 'Nunito, sans-serif' }}>
+            <h3 className="text-base font-bold text-white mb-5">
               Get In Touch
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#4AB8E8]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4 text-[#4AB8E8]" />
+                <div className="w-8 h-8 rounded-lg bg-sc-terracotta/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <HugeiconsIcon icon={MapPinIcon} className="w-4 h-4 text-sc-terracotta" />
                 </div>
-                <p className="text-white/70 text-sm" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                <p className="text-white/70 text-sm">
                   74 Footcray Road<br />
                   Eltham, London SE9 2SU
                 </p>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#6DD5A3]/20 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 text-[#6DD5A3]" />
+                <div className="w-8 h-8 rounded-lg bg-sc-teal/20 flex items-center justify-center flex-shrink-0">
+                  <HugeiconsIcon icon={Call02Icon} className="w-4 h-4 text-sc-teal" />
                 </div>
                 <a href="tel:+447448364115"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                  className="text-white/70 hover:text-white text-sm transition-colors">
                   +44 7448 364115
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#FFD166]/20 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-[#FFD166]" />
+                <div className="w-8 h-8 rounded-lg bg-sc-peach/20 flex items-center justify-center flex-shrink-0">
+                  <HugeiconsIcon icon={Mail01Icon} className="w-4 h-4 text-sc-peach" />
                 </div>
                 <a href="mailto:Sumsychildcareltd@myyahoo.com"
-                  className="text-white/70 hover:text-white text-sm transition-colors break-all"
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                  className="text-white/70 hover:text-white text-sm transition-colors break-all">
                   Sumsychildcareltd@myyahoo.com
                 </a>
               </li>
             </ul>
 
             <div className="mt-5 p-3 rounded-xl bg-white/5 border border-white/10">
-              <p className="text-xs font-bold text-[#4AB8E8] mb-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <p className="text-xs font-bold text-sc-terracotta mb-1">
                 OPENING HOURS
               </p>
-              <p className="text-white/60 text-xs" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <p className="text-white/60 text-xs">
                 Mon–Fri: 7:00 AM – 9:00 PM<br />
                 Saturday: 10:00 AM – 8:00 PM<br />
                 Sunday: 11:00 AM – 6:00 PM
@@ -164,15 +168,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/50 text-sm text-center sm:text-left" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+          <p className="text-white/50 text-sm text-center sm:text-left">
             © {year} Sumsy Childcare Limited. All rights reserved. Made with{' '}
-            <Heart className="w-3 h-3 inline text-red-400" /> for families.
+            <HugeiconsIcon icon={FavouriteIcon} className="w-3 h-3 inline text-sc-terracotta" /> for families.
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Service'].map((t) => (
               <a key={t} href="#"
-                className="text-white/50 hover:text-white text-xs transition-colors"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                className="text-white/50 hover:text-white text-xs transition-colors">
                 {t}
               </a>
             ))}

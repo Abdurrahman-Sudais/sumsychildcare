@@ -2,114 +2,166 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Sun, Phone } from 'lucide-react'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Menu01Icon, Cancel01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import logo from '@/app/Assets/SunsyChildCare.png'
 
 const navLinks = [
-  { href: '/',         label: 'Home'     },
-  { href: '/about',    label: 'About'    },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/gallery',  label: 'Gallery'  },
-  { href: '/contact',  label: 'Contact'  },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
+  // Close menu on route change
   useEffect(() => { setIsOpen(false) }, [pathname])
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-soft border-b border-sky-100'
-        : 'bg-white/80 backdrop-blur-sm'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#4AB8E8] to-[#6DD5A3] rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-              <Sun className="w-5 h-5 text-white" strokeWidth={2.5} />
-            </div>
-            <div>
-              <span className="text-xl font-extrabold text-[#2D4A8A] leading-none block"
-                style={{ fontFamily: 'Nunito, sans-serif' }}>
-                Sumsy<span className="text-[#4AB8E8]"> Childcare</span>
+    <>
+      <header className="fixed top-4 sm:top-6 left-0 right-0 z-50 px-4 pointer-events-none">
+        <div className="w-full max-w-6xl mx-auto pointer-events-auto">
+          {/* Main Floating Nav Pill */}
+          <div className="bg-white/80 backdrop-blur-xl border border-sc-navy/10 rounded-full px-2 py-2 flex justify-between items-center shadow-lg">
+            
+            {/* Logo Section */}
+            <Link href="/" className="flex items-center gap-2 pl-3 sm:pl-5 pr-2 group">
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 transition-transform group-hover:scale-110">
+                <Image
+                  src={logo}
+                  alt="Sumsy Childcare"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <span className="text-sm sm:text-base font-bold text-sc-navy tracking-tight whitespace-nowrap">
+                Sumsy <span className="text-sc-terracotta">Childcare</span>
               </span>
-              <span className="text-[10px] text-[#6B7280] font-medium leading-none tracking-wide"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                Ofsted Registered · Eltham SE9
-              </span>
+            </Link>
+
+            {/* Desktop Links (Hidden on mobile/tablet) */}
+            <nav className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 ${
+                    pathname === link.href
+                      ? 'text-sc-terracotta bg-sc-terracotta/5'
+                      : 'text-sc-navy hover:text-sc-terracotta hover:bg-sc-navy/5'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Action Group */}
+            <div className="flex items-center gap-2 pr-1">
+              {/* Desktop/Tablet CTA - Visible down to md */}
+              <div className="hidden md:block">
+                <Link
+                  href="/enroll"
+                  className="group flex items-center bg-sc-navy border border-sc-navy rounded-full p-1 pl-5 gap-3 transition-all duration-300 hover:bg-sc-steel active:scale-95"
+                >
+                  <span className="text-xs sm:text-sm font-bold text-white">
+                    Enroll Now
+                  </span>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5">
+                    <HugeiconsIcon icon={ArrowRight01Icon} className="w-4 h-4 text-sc-navy" />
+                  </div>
+                </Link>
+              </div>
+
+              {/* Mobile/Tablet Hamburger Button - Visible up to lg */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-sc-navy/5 text-sc-navy hover:bg-sc-navy/10 transition-colors"
+                aria-label="Toggle menu"
+              >
+                <HugeiconsIcon icon={isOpen ? Cancel01Icon : Menu01Icon} className="w-5 h-5" />
+              </button>
             </div>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:bg-sky-50 hover:text-[#4AB8E8] ${
-                  pathname === link.href ? 'text-[#4AB8E8] bg-sky-50' : 'text-[#374151]'
-                }`}
-                style={{ fontFamily: 'Nunito, sans-serif' }}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <a href="tel:+447448364115"
-              className="inline-flex items-center gap-2 bg-[#4AB8E8] hover:bg-[#2D9FD4] text-white font-bold text-sm px-5 py-2.5 rounded-2xl transition-all duration-200 shadow-md"
-              style={{ fontFamily: 'Nunito, sans-serif' }}>
-              <Phone className="w-4 h-4" />
-              Call Us
-            </a>
           </div>
+        </div>
+      </header>
 
-          {/* Mobile Hamburger */}
-          <button onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-xl text-[#374151] hover:bg-sky-50 hover:text-[#4AB8E8] transition-colors"
-            aria-label="Toggle menu" aria-expanded={isOpen}>
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 z-[60] bg-white transition-all duration-500 ease-in-out flex flex-col ${
+          isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Mobile Header in Menu */}
+        <div className="flex items-center justify-between px-8 py-8">
+          <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
+            <div className="relative w-10 h-10">
+              <Image
+                src={logo}
+                alt="Sumsy Childcare"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="text-xl font-bold text-sc-navy tracking-tight">Sumsy <span className="text-sc-terracotta">Childcare</span></span>
+          </Link>
+          
+          <button onClick={() => setIsOpen(false)}
+            className="w-10 h-10 flex items-center justify-center rounded-full text-sc-navy hover:bg-sc-navy/5 transition-colors"
+            aria-label="Close menu">
+            <HugeiconsIcon icon={Cancel01Icon} className="w-6 h-6" />
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div className="bg-white border-t border-sky-100 px-4 py-4 space-y-1">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}
-              className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                pathname === link.href
-                  ? 'text-[#4AB8E8] bg-sky-50'
-                  : 'text-[#374151] hover:bg-sky-50 hover:text-[#4AB8E8]'
+        {/* Mobile Navigation Links */}
+        <div className="flex-1 flex flex-col px-10 pt-10 space-y-6 sm:space-y-8">
+          {navLinks.map((link, idx) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`text-4xl sm:text-5xl font-bold tracking-tighter transition-all duration-500 transform ${
+                isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              } ${
+                pathname === link.href ? 'text-sc-terracotta' : 'text-sc-navy'
               }`}
-              style={{ fontFamily: 'Nunito, sans-serif' }}>
+              style={{ transitionDelay: `${idx * 75}ms` }}
+            >
               {link.label}
             </Link>
           ))}
-          <div className="pt-2">
-            <a href="tel:+447448364115"
-              className="flex items-center justify-center gap-2 bg-[#4AB8E8] text-white font-bold text-sm px-5 py-3 rounded-2xl w-full"
-              style={{ fontFamily: 'Nunito, sans-serif' }}>
-              <Phone className="w-4 h-4" />
-              Call +44 7448 364115
-            </a>
-          </div>
+        </div>
+
+        {/* Mobile Bottom Action */}
+        <div className="p-10 pb-16">
+          <Link
+            href="/enroll"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center w-full py-6 rounded-full bg-sc-navy text-white text-xl font-bold shadow-2xl active:scale-95 transition-all"
+          >
+            Enroll Now
+          </Link>
         </div>
       </div>
-    </header>
+    </>
   )
 }

@@ -13,7 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lucide-react": "^0.395.0",
+    "@hugeicons/core-free-icons": "^4.1.1",
+    "@hugeicons/react": "^1.1.6",
     "next": "^15.5.15",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"

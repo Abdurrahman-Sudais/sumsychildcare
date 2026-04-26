@@ -34,8 +34,7 @@ export default function WhatsAppFloat() {
  
       {/* Tooltip — needs group on <a> to work */}
       <div
-        className="absolute bottom-16 right-0 bg-white text-[#2C3E50] text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-        style={{ fontFamily: 'Quicksand, sans-serif' }}
+        className="absolute bottom-16 right-0 bg-white text-sc-navy text-xs font-bold px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
       >
         Chat with us!
       </div>

@@ -7,51 +7,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Primary brand colors
-        sky: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-        },
-        mint: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-        },
-        peach: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-        },
-        lavender: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-        },
-        // Custom brand
-        brand: {
-          blue: '#4AB8E8',
-          green: '#6DD5A3',
-          yellow: '#FFD166',
-          coral: '#FF8C74',
-          purple: '#B5A4E8',
-          navy: '#2D4A8A',
-          text: '#2C3E50',
-          muted: '#6B7280',
+        // Sumsy Childcare Brand Palette
+        sc: {
+          terracotta: '#E8643A',
+          navy: '#1C2B3A',
+          cream: '#F9F5F0',
+          peach: '#FBBF8A',
+          teal: '#4ABFB5',
+          sand: '#F4EAE0',
+          steel: '#2D4A5E',
         },
       },
       fontFamily: {
-        display: ['Nunito', 'system-ui', 'sans-serif'],
+        sans: ['Quicksand', 'system-ui', 'sans-serif'],
+        display: ['Quicksand', 'system-ui', 'sans-serif'],
         body: ['Quicksand', 'system-ui', 'sans-serif'],
       },
       borderRadius: {

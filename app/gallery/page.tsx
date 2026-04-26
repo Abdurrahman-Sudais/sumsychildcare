@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { X, ZoomIn, ImageIcon, Home, TreePine, Layers } from 'lucide-react'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Cancel01Icon, ZoomIn, Image01Icon, Home01Icon, PineTreeIcon, LayerIcon } from '@hugeicons/core-free-icons'
 
 const galleryImages = [
   {
@@ -56,9 +57,9 @@ const galleryImages = [
 ]
 
 const categories = [
-  { key: 'all', label: 'All Photos', icon: ImageIcon },
-  { key: 'indoor', label: 'Indoor Spaces', icon: Home },
-  { key: 'outdoor', label: 'Outdoor Areas', icon: TreePine },
+  { key: 'all', label: 'All Photos', icon: LayerIcon },
+  { key: 'indoor', label: 'Indoor Spaces', icon: Home01Icon },
+  { key: 'outdoor', label: 'Outdoor Areas', icon: PineTreeIcon },
 ]
 
 export default function GalleryPage() {
@@ -79,19 +80,16 @@ export default function GalleryPage() {
   return (
     <>
       {/* HERO */}
-      <section className="hero-pattern pt-28 pb-16">
+      <section className="pt-32 pb-16 bg-sc-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#6DD5A3]/15 text-[#2D6A4F] px-4 py-1.5 rounded-full text-sm font-bold mb-5"
-            style={{ fontFamily: 'Nunito, sans-serif' }}>
-            <ImageIcon className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-white text-sc-terracotta px-4 py-1.5 rounded-full text-sm font-bold mb-5 border border-sc-navy/10 shadow-sm">
+            <HugeiconsIcon icon={Image01Icon} className="w-4 h-4" />
             Facility Gallery
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#2D4A8A] mb-5"
-            style={{ fontFamily: 'Nunito, sans-serif' }}>
+          <h1 className="text-5xl md:text-6xl font-bold text-sc-navy mb-6 tracking-tight">
             Our Facility in Eltham
           </h1>
-          <p className="text-lg text-[#4B5563] max-w-2xl mx-auto leading-relaxed"
-            style={{ fontFamily: 'Quicksand, sans-serif' }}>
+          <p className="text-lg text-sc-steel max-w-2xl mx-auto leading-relaxed">
             A safe, bright, and stimulating environment — purpose-designed for
             children aged 5–16 to feel comfortable, engaged, and happy.
           </p>
@@ -99,22 +97,21 @@ export default function GalleryPage() {
       </section>
 
       {/* GALLERY */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-20 rounded-t-[3rem] -mt-8 border-t border-sc-navy/5 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
             {categories.map(({ key, label, icon: Icon }) => (
               <button
                 key={key}
                 onClick={() => setActiveCategory(key)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-bold transition-all duration-200 ${
+                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 border-[1.5px] ${
                   activeCategory === key
-                    ? 'bg-[#4AB8E8] text-white shadow-md shadow-sky-200'
-                    : 'bg-gray-100 text-[#6B7280] hover:bg-sky-50 hover:text-[#4AB8E8]'
+                    ? 'bg-sc-navy text-white border-sc-navy shadow-md'
+                    : 'bg-transparent text-sc-navy border-sc-navy/20 hover:border-sc-terracotta hover:text-sc-terracotta'
                 }`}
-                style={{ fontFamily: 'Nunito, sans-serif' }}
               >
-                <Icon className="w-4 h-4" />
+                <HugeiconsIcon icon={Icon} className="w-4 h-4" />
                 {label}
               </button>
             ))}
@@ -125,7 +122,7 @@ export default function GalleryPage() {
             {filtered.map((img, index) => (
               <div
                 key={img.src + index}
-                className="break-inside-avoid cursor-pointer group relative rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300"
+                className="break-inside-avoid cursor-pointer group relative rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-sc-navy/5"
                 onClick={() => setLightboxIndex(index)}
               >
                 <Image
@@ -133,11 +130,11 @@ export default function GalleryPage() {
                   alt={img.alt}
                   width={400}
                   height={300}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-[#2D4A8A]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <ZoomIn className="w-6 h-6 text-white" />
+                <div className="absolute inset-0 bg-sc-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                  <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center border border-white/30">
+                    <HugeiconsIcon icon={ZoomIn} className="w-6 h-6 text-white" />
                   </div>
                 </div>
               </div>
@@ -145,9 +142,9 @@ export default function GalleryPage() {
           </div>
 
           {filtered.length === 0 && (
-            <div className="text-center py-20 text-[#9CA3AF]">
-              <ImageIcon className="w-16 h-16 mx-auto mb-4 opacity-30" />
-              <p style={{ fontFamily: 'Quicksand, sans-serif' }}>No photos in this category yet.</p>
+            <div className="text-center py-20 text-sc-steel/40">
+              <HugeiconsIcon icon={Image01Icon} className="w-16 h-16 mx-auto mb-4 opacity-20" />
+              <p className="text-lg">No photos in this category yet.</p>
             </div>
           )}
         </div>
@@ -156,38 +153,38 @@ export default function GalleryPage() {
       {/* LIGHTBOX */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[999] bg-sc-navy/95 backdrop-blur-md flex items-center justify-center p-4 transition-all"
           onClick={closeLightbox}
         >
           <button onClick={closeLightbox}
-            className="absolute top-4 right-4 w-11 h-11 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center text-white transition-colors z-10"
+            className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-10"
             aria-label="Close lightbox">
-            <X className="w-6 h-6" />
+            <HugeiconsIcon icon={Cancel01Icon} className="w-6 h-6" />
           </button>
           <button onClick={(e) => { e.stopPropagation(); prevImage() }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center text-white text-xl font-bold transition-colors z-10"
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white text-xl font-bold transition-colors z-10"
             aria-label="Previous image">
             ‹
           </button>
           <button onClick={(e) => { e.stopPropagation(); nextImage() }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center text-white text-xl font-bold transition-colors z-10"
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white text-xl font-bold transition-colors z-10"
             aria-label="Next image">
             ›
           </button>
-          <div className="relative max-w-4xl max-h-[85vh] w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-5xl max-h-[85vh] w-full" onClick={(e) => e.stopPropagation()}>
             <Image
               src={filtered[lightboxIndex].src}
               alt={filtered[lightboxIndex].alt}
-              width={800}
-              height={600}
-              className="rounded-2xl object-contain max-h-[80vh] w-full shadow-2xl"
+              width={1000}
+              height={800}
+              className="rounded-3xl object-contain max-h-[80vh] w-full shadow-2xl"
               priority
             />
-            <div className="text-center mt-4">
-              <p className="text-white/80 text-sm" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+            <div className="text-center mt-6">
+              <p className="text-white text-lg">
                 {filtered[lightboxIndex].alt}
               </p>
-              <p className="text-white/50 text-xs mt-1" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <p className="text-sc-terracotta text-sm mt-1 font-bold">
                 {lightboxIndex + 1} / {filtered.length}
               </p>
             </div>

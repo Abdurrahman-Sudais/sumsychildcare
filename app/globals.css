@@ -8,17 +8,18 @@
    CSS Custom Properties
    ===================== */
 :root {
-  --color-brand-blue: #4AB8E8;
-  --color-brand-green: #6DD5A3;
-  --color-brand-yellow: #FFD166;
-  --color-brand-coral: #FF8C74;
-  --color-brand-navy: #2D4A8A;
-  --color-bg-soft: #F8FBFF;
-  --color-text: #2C3E50;
-  --color-muted: #6B7280;
-  --radius-card: 1.25rem;
-  --shadow-card: 0 4px 20px rgba(0,0,0,0.07);
-  --shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+  --sc-terracotta: #E8643A;
+  --sc-navy: #1C2B3A;
+  --sc-cream: #F9F5F0;
+  --sc-peach: #FBBF8A;
+  --sc-teal: #4ABFB5;
+  --sc-sand: #F4EAE0;
+  --sc-steel: #2D4A5E;
+
+  --radius-card: 2rem;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.05);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.1);
+  --shadow-button: 0 8px 24px rgba(232, 100, 58, 0.2);
   --transition-smooth: all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
@@ -35,14 +36,14 @@ html {
 
 body {
   font-family: 'Quicksand', system-ui, sans-serif;
-  color: var(--color-text);
-  background-color: #ffffff;
+  color: var(--sc-navy);
+  background-color: var(--sc-cream);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: 'Quicksand', system-ui, sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -88,18 +89,30 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-[#4AB8E8] hover:bg-[#2D9FD4] text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
-    font-family: 'Nunito', sans-serif;
+    @apply inline-flex items-center gap-2 bg-[#E8643A] hover:bg-[#d55a33] text-white font-bold px-8 py-4 rounded-full shadow-[var(--shadow-button)] transition-all duration-300 hover:-translate-y-0.5;
+    font-family: 'Quicksand', sans-serif;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 bg-white hover:bg-[#F0F9FF] text-[#2D4A8A] font-bold px-6 py-3 rounded-2xl border-2 border-[#4AB8E8] hover:border-[#2D9FD4] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5;
-    font-family: 'Nunito', sans-serif;
+    @apply inline-flex items-center gap-2 bg-transparent hover:text-[#E8643A] font-bold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 relative;
+    color: var(--sc-navy);
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background-color: currentColor;
+    transition: opacity 0.3s;
   }
 
   .btn-green {
     @apply inline-flex items-center gap-2 bg-[#6DD5A3] hover:bg-[#50C490] text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Outfit', sans-serif;
   }
 
   .card {
@@ -107,12 +120,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-extrabold text-[#2D4A8A];
-    font-family: 'Nunito', sans-serif;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-[#1C2B3A] tracking-tight;
+    font-family: 'Quicksand', sans-serif;
   }
 
   .section-subtitle {
-    @apply text-lg text-[#6B7280] font-medium mt-3 max-w-2xl mx-auto;
+    @apply text-lg text-[#2D4A5E] font-medium mt-4 max-w-2xl;
     font-family: 'Quicksand', sans-serif;
   }
 
@@ -141,13 +154,13 @@ h1, h2, h3, h4, h5, h6 {
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #E5E7EB;
-  border-radius: 0.75rem;
-  font-family: 'Quicksand', sans-serif;
+  border: 2px solid var(--color-border);
+  border-radius: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-  background: #ffffff;
-  color: #2C3E50;
+  background: transparent;
+  color: var(--color-text);
 }
 
 .form-input:focus {
