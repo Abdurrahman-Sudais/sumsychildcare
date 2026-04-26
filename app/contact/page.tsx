@@ -41,7 +41,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-8 mt-16">
             {[
               { icon: CallIcon, label: 'Call Us', value: '07448 364115', sub: 'Mon-Sun, 8am-8pm', href: 'tel:+447448364115' },
-              { icon: Mail01Icon, label: 'Email Us', value: 'info@sumsy.co.uk', sub: 'We reply within 24h', href: 'mailto:info@sumsy.co.uk' },
+              { icon: Mail01Icon, label: 'Email Us', value: 'Sumsychildcareltd@myyahoo.com', sub: 'We reply within 24h', href: 'mailto:Sumsychildcareltd@myyahoo.com' },
               { icon: Location01Icon, label: 'Visit Us', value: 'Eltham, SE9', sub: 'Professional Home Setting', href: 'https://maps.google.com' },
             ].map((card, i) => (
               <AnimateIn key={card.label} delay={i * 0.1} direction="up" distance={20}>
