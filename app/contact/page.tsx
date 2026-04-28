@@ -16,8 +16,9 @@ import AnimateIn from '@/components/AnimateIn'
 import Magnetic from '@/components/Magnetic'
 
 const officeHours = [
-  { day: 'Monday – Friday', hours: '8:00 AM – 6:30 PM', open: true },
-  { day: 'Saturday – Sunday', hours: 'By Arrangement', open: true },
+  { day: 'Monday – Friday', hours: '7:00 AM – 9:00 PM', open: true },
+  { day: 'Saturday', hours: '10:00 AM – 8:00 PM', open: true },
+  { day: 'Sunday', hours: '11:00 AM – 6:00 PM', open: true },
 ]
 
 export default function ContactPage() {
@@ -40,7 +41,7 @@ export default function ContactPage() {
 
           <div className="grid lg:grid-cols-3 gap-8 mt-16">
             {[
-              { icon: CallIcon, label: 'Call Us', value: '07448 364115', sub: 'Mon-Sun, 8am-8pm', href: 'tel:+447448364115' },
+              { icon: CallIcon, label: 'Call Us', value: '07448 364115', sub: 'Mon-Sun, 7am-9pm', href: 'tel:+447448364115' },
               { icon: Mail01Icon, label: 'Email Us', value: 'Sumsychildcareltd@myyahoo.com', sub: 'We reply within 24h', href: 'mailto:Sumsychildcareltd@myyahoo.com' },
               { icon: Location01Icon, label: 'Visit Us', value: 'Eltham, SE9', sub: 'Professional Home Setting', href: 'https://maps.google.com' },
             ].map((card, i) => (
