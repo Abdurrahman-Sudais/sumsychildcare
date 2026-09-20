@@ -9,10 +9,17 @@ export default function PageLoader() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Ensuring the loader stays long enough to be seen but not too long to be annoying
+    // Skip the splash entirely for users who've asked for reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setLoading(false)
+      return
+    }
+
+    // Brief branded splash on first load only — short enough not to feel like a delay
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2000)
+    }, 900)
 
     return () => clearTimeout(timer)
   }, [])

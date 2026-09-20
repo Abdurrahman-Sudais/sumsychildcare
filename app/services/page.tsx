@@ -103,7 +103,7 @@ const features = [
   'CPR & First Aid certified',
   'Consistent, personal care — same carer every time',
   'Snacks and meals available',
-  'Ages 5–16 catered for',
+  'Ages 6–16 catered for',
   'Open 7 days a week',
 ]
 
@@ -118,7 +118,7 @@ export default function ServicesPage() {
             Our Services
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-[72px] font-bold text-sc-navy mb-6 tracking-tight">
-            Childcare for Ages 5–16 <br className="hidden md:block" /> in Eltham
+            Childcare for Ages 6–16 <br className="hidden md:block" /> in Eltham
           </h1>
           <p className="text-lg text-sc-steel max-w-2xl mx-auto leading-relaxed">
             Flexible, Ofsted-registered care before school, after school, during holidays

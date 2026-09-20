@@ -16,11 +16,13 @@ import {
   QuoteUpIcon,
   CallIcon,
   Mail01Icon,
+  WhatsappIcon,
 } from '@hugeicons/core-free-icons'
 import heroImg from '@/app/Assets/SunsyCareHeroImage.png'
 import logo from '@/app/Assets/SunsyChildCare.png'
 import AnimateIn from '@/components/AnimateIn'
 import Magnetic from '@/components/Magnetic'
+import EnquiryForm from '@/components/EnquiryForm'
 
 export const metadata: Metadata = {
   title: 'Home | Sumsy Childcare Limited',
@@ -43,39 +45,6 @@ const testimonials = [
     rating: 5,
     avatar: 'JP',
   },
-]
-
-const facilityImages = [
-  { src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&q=80', alt: 'Bright classroom space' },
-  { src: 'https://images.unsplash.com/photo-1573164574230-db1d5e960238?w=400&q=80', alt: 'Colourful facility interior' },
-  { src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', alt: 'Safe and welcoming entrance' },
-]
-
-const programs = [
-  {
-    age: 'Infants',
-    range: '0 – 2 Years',
-    focus: 'Sensory play, nurturing environment, and milestone tracking.',
-    icon: '👶'
-  },
-  {
-    age: 'Toddlers',
-    range: '2 – 3 Years',
-    focus: 'Language development, social interaction, and motor skills.',
-    icon: '🧸'
-  },
-  {
-    age: 'Preschool',
-    range: '3 – 5 Years',
-    focus: 'Foundation for school, creative arts, and early literacy.',
-    icon: '🎨'
-  },
-  {
-    age: 'School Age',
-    range: '5 – 16 Years',
-    focus: 'After-school support, homework help, and engaging activities.',
-    icon: '📚'
-  }
 ]
 
 const dailyRhythm = [
@@ -452,13 +421,13 @@ export default function HomePage() {
                     <span className="text-lg font-bold">07448 364115</span>
                   </div>
                 </a>
-                <a href="https://wa.me/447448364115" className="flex items-center gap-4 group">
+                <a href="https://wa.me/447448364115" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sc-terracotta transition-colors">
-                    <HugeiconsIcon icon={ArrowRight01Icon} className="w-5 h-5 text-white" />
+                    <HugeiconsIcon icon={WhatsappIcon} className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-lg font-bold">Chat on WhatsApp</span>
                 </a>
-                <a href="Sumsychildcareltd@myyahoo.com" className="flex items-center gap-4 group">
+                <a href="mailto:Sumsychildcareltd@myyahoo.com" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sc-terracotta transition-colors">
                     <HugeiconsIcon icon={Mail01Icon} className="w-5 h-5 text-white" />
                   </div>
@@ -469,31 +438,10 @@ export default function HomePage() {
             
             <AnimateIn id="enquire" direction="left" delay={0.2} className="bg-white rounded-[40px] p-8 md:p-12 text-sc-navy shadow-2xl">
               <h3 className="text-3xl font-bold mb-8">Enquire Now</h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Parent Name</label>
-                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Full Name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Child&apos;s Age</label>
-                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Age" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Email Address</label>
-                  <input type="email" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Sumsychildcareltd@myyahoo.com" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Message</label>
-                  <textarea rows={4} className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="How can we help?"></textarea>
-                </div>
-                <Magnetic>
-                  <button className="w-full btn-primary py-5 text-xl">
-                    Submit Enquiry
-                  </button>
-                </Magnetic>
-              </form>
+              <EnquiryForm
+                secondField={{ name: 'childAge', label: "Child's Age", placeholder: 'Age' }}
+                submitLabel="Submit Enquiry"
+              />
             </AnimateIn>
           </div>
         </div>
