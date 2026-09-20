@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sumsy Childcare Limited | Eltham SE9',
     description:
-      'Ofsted-registered childcare for ages 5–16 in Eltham. Flexible hours 7 days a week.',
+      'Ofsted-registered childcare for ages 6–16 in Eltham. Flexible hours 7 days a week.',
   },
   robots: {
     index: true,

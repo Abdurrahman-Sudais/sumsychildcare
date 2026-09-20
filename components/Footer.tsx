@@ -24,8 +24,8 @@ const WhatsAppIcon = () => (
 )
 
 const socialLinks = [
-  { Icon: InstagramIcon, href: '#', label: 'Instagram', hover: 'hover:text-pink-400' },
-  { Icon: FacebookIcon,  href: '#', label: 'Facebook',  hover: 'hover:text-blue-400' },
+  { Icon: InstagramIcon, href: '', label: 'Instagram', hover: 'hover:text-pink-400' },
+  { Icon: FacebookIcon,  href: '',  label: 'Facebook',  hover: 'hover:text-blue-400' },
   { Icon: WhatsAppIcon,  href: 'https://wa.me/447448364115', label: 'WhatsApp', hover: 'hover:text-green-400' },
 ]
 
@@ -73,12 +73,19 @@ export default function Footer() {
               Safe, flexible care for children aged 6–16, seven days a week.
             </p>
             <div className="flex items-center gap-3">
-              {socialLinks.map(({ Icon, href, label, hover }) => (
-                <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer"
-                  className={`w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 ${hover} transition-all duration-200 hover:scale-110`}>
-                  <Icon />
-                </a>
-              ))}
+              {socialLinks.map(({ Icon, href, label, hover }) =>
+                href ? (
+                  <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer"
+                    className={`w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 ${hover} transition-all duration-200 hover:scale-110`}>
+                    <Icon />
+                  </a>
+                ) : (
+                  <span key={label} aria-label={`${label} (coming soon)`} title="Coming soon"
+                    className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-white/30 cursor-default">
+                    <Icon />
+                  </span>
+                )
+              )}
             </div>
           </div>
 
@@ -174,10 +181,10 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Service'].map((t) => (
-              <a key={t} href="#"
-                className="text-white/50 hover:text-white text-xs transition-colors">
+              <span key={t} title="Coming soon"
+                className="text-white/40 text-xs cursor-default">
                 {t}
-              </a>
+              </span>
             ))}
           </div>
         </div>

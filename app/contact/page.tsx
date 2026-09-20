@@ -14,6 +14,7 @@ import {
 } from '@hugeicons/core-free-icons'
 import AnimateIn from '@/components/AnimateIn'
 import Magnetic from '@/components/Magnetic'
+import EnquiryForm from '@/components/EnquiryForm'
 
 const officeHours = [
   { day: 'Monday – Friday', hours: '7:00 AM – 9:00 PM', open: true },
@@ -43,10 +44,13 @@ export default function ContactPage() {
             {[
               { icon: CallIcon, label: 'Call Us', value: '07448 364115', sub: 'Mon-Sun, 7am-9pm', href: 'tel:+447448364115' },
               { icon: Mail01Icon, label: 'Email Us', value: 'Sumsychildcareltd@myyahoo.com', sub: 'We reply within 24h', href: 'mailto:Sumsychildcareltd@myyahoo.com' },
-              { icon: Location01Icon, label: 'Visit Us', value: 'Eltham, SE9', sub: 'Professional Home Setting', href: 'https://maps.google.com' },
+              { icon: Location01Icon, label: 'Visit Us', value: 'Eltham, SE9', sub: 'Professional Home Setting', href: 'https://www.google.com/maps/search/?api=1&query=74+Footcray+Road+Eltham+London+SE9+2SU' },
             ].map((card, i) => (
               <AnimateIn key={card.label} delay={i * 0.1} direction="up" distance={20}>
-                <a href={card.href} className="block group h-full p-8 bg-white rounded-[32px] border-[1.5px] border-sc-navy/5 hover:border-sc-terracotta transition-all duration-300 shadow-sm hover:shadow-xl">
+                <a
+                  href={card.href}
+                  {...(card.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="block group h-full p-8 bg-white rounded-[32px] border-[1.5px] border-sc-navy/5 hover:border-sc-terracotta transition-all duration-300 shadow-sm hover:shadow-xl">
                   <div className="w-14 h-14 bg-sc-cream rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <HugeiconsIcon icon={card.icon} className="w-7 h-7 text-sc-terracotta" />
                   </div>
@@ -66,31 +70,10 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-16">
             <AnimateIn direction="right">
               <h2 className="text-3xl md:text-5xl font-bold text-sc-navy mb-8 tracking-tighter">Send us a message</h2>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Your Name</label>
-                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="Full Name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Phone Number</label>
-                    <input type="tel" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="07123 456789" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Email Address</label>
-                  <input type="email" className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="hello@email.com" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-sc-steel uppercase tracking-wider">Message</label>
-                  <textarea rows={6} className="w-full px-6 py-4 rounded-2xl bg-sc-cream border border-sc-navy/10 focus:outline-none focus:border-sc-terracotta transition-colors" placeholder="How can we help?"></textarea>
-                </div>
-                <Magnetic>
-                  <button className="btn-primary w-full py-5 text-xl shadow-xl">
-                    Send Message
-                  </button>
-                </Magnetic>
-              </form>
+              <EnquiryForm
+                secondField={{ name: 'phone', label: 'Phone Number', placeholder: '07123 456789', type: 'tel' }}
+                submitLabel="Send Message"
+              />
             </AnimateIn>
 
             <AnimateIn direction="left" delay={0.2} className="space-y-12">

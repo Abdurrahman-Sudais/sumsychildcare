@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,32 +91,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand', sans-serif;
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 bg-transparent hover:text-[#E8643A] font-bold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 relative;
-    color: var(--sc-navy);
-    font-family: 'Quicksand', sans-serif;
-  }
-  
-  .btn-secondary::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    left: 24px;
-    right: 24px;
-    height: 1px;
-    background-color: currentColor;
-    transition: opacity 0.3s;
-  }
-
-  .btn-green {
-    @apply inline-flex items-center gap-2 bg-[#6DD5A3] hover:bg-[#50C490] text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
-    font-family: 'Outfit', sans-serif;
-  }
-
-  .card {
-    @apply bg-white rounded-3xl p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-hover)] transition-all duration-300;
-  }
-
   .section-title {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold text-[#1C2B3A] tracking-tight;
     font-family: 'Quicksand', sans-serif;
@@ -127,10 +99,6 @@ h1, h2, h3, h4, h5, h6 {
   .section-subtitle {
     @apply text-lg text-[#2D4A5E] font-medium mt-4 max-w-2xl;
     font-family: 'Quicksand', sans-serif;
-  }
-
-  .badge {
-    @apply inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full;
   }
 }
 
@@ -144,58 +112,8 @@ h1, h2, h3, h4, h5, h6 {
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #4AB8E8;
+  background: var(--sc-terracotta);
   border-radius: 4px;
-}
-
-/* =====================
-   Form Styles
-   ===================== */
-.form-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--color-border);
-  border-radius: 1rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.95rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background: transparent;
-  color: var(--color-text);
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #4AB8E8;
-  box-shadow: 0 0 0 3px rgba(74,184,232,0.15);
-}
-
-.form-input::placeholder {
-  color: #9CA3AF;
-}
-
-.form-label {
-  display: block;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #2D4A8A;
-  margin-bottom: 0.4rem;
-}
-
-/* =====================
-   Hero Background Pattern
-   ===================== */
-.hero-pattern {
-  background-color: #F0F9FF;
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(74,184,232,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(109,213,163,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 60% 60%, rgba(255,209,102,0.08) 0%, transparent 40%);
-}
-
-.dots-pattern {
-  background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
-  background-size: 24px 24px;
 }
 
 /* =====================
@@ -215,42 +133,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =====================
-   Testimonial Card
+   Reduced Motion
    ===================== */
-.testimonial-card {
-  background: linear-gradient(135deg, #ffffff, #F8FBFF);
-  border: 1px solid rgba(74,184,232,0.1);
-}
-
-/* =====================
-   Nav Active State
-   ===================== */
-.nav-link-active {
-  color: #4AB8E8;
-  font-weight: 700;
-}
-
-/* =====================
-   Gradient Text
-   ===================== */
-.gradient-text {
-  background: linear-gradient(135deg, #4AB8E8, #6DD5A3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* =====================
-   Image Overlay
-   ===================== */
-.img-overlay {
-  position: relative;
-  overflow: hidden;
-}
-
-.img-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(45,74,138,0.5) 0%, transparent 60%);
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

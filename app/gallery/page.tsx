@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { 
@@ -87,6 +87,24 @@ export default function GalleryPage() {
     setLightboxIndex((i) => (i !== null ? (i - 1 + filtered.length) % filtered.length : null))
   const nextImage = () =>
     setLightboxIndex((i) => (i !== null ? (i + 1) % filtered.length : null))
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox()
+      if (e.key === 'ArrowLeft') prevImage()
+      if (e.key === 'ArrowRight') nextImage()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = 'unset'
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [lightboxIndex])
 
   return (
     <>
